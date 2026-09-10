@@ -228,6 +228,7 @@
 .scp1:active { transform: translateY(2px); box-shadow: rgb(185, 83, 47) 0px 2px 0px; }
 .scp2:hover { transform: translateY(-6px); box-shadow: rgba(13, 59, 69, 0.14) 0px 16px 34px; border-top-color: rgb(232, 116, 74); }
 .scp3:focus { border-color: rgb(31, 122, 140); box-shadow: rgba(31, 122, 140, 0.12) 0px 0px 0px 3px; }
+.scp4:hover { border-color: rgb(31, 122, 140); background: rgb(246, 249, 249); }
 </style><style>html,body{height:100%;margin:0}#dc-root,#dc-root>.sc-host{height:100%}</style><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@500;700;800&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Montserrat:wght@600;700&amp;display=swap" rel="stylesheet"/><style>
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -238,6 +239,12 @@
   @keyframes ofPulse { 0% { box-shadow: 0 0 0 0 rgba(232,116,74,.55); } 70% { box-shadow: 0 0 0 9px rgba(232,116,74,0); } 100% { box-shadow: 0 0 0 0 rgba(232,116,74,0); } }
   @media (prefers-reduced-motion: reduce) { * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; } }
   input::placeholder, textarea::placeholder { color: #9aa9ae; }
+  /* ===== v17 (2026-09-10) 問い合わせフォーム 追加項目 ===== */
+  /* ご希望の形式：PCは横並び（SPは下の767pxブロックで縦積みにする） */
+  .of-prefer-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .of-prefer-opt { flex: 0 1 auto; }
+  /* ご都合のよい日時：ラベル（第N希望）＋入力の2列 */
+  .of-wish-row { display: grid; grid-template-columns: 68px 1fr; align-items: center; gap: 10px; }
   /* SP追従CTAバー（〜767px・ヒーローを過ぎたら表示） */
   /* 既定は表示（JSが動かない環境でもSPではCTAが必ず出る＝フェイルセーフ）。
      JSが動く環境ではヒーロー上にいる間だけ data-visible="0" にして隠す。 */
@@ -262,6 +269,9 @@
     .of-step { min-width: 0 !important; }
     /* (4) 担当表グリッドは1列に */
     .of-role-grid { grid-template-columns: 1fr !important; }
+    /* (5) v17：ご希望の形式は縦積み（PCは横並びのまま） */
+    .of-prefer-row { flex-direction: column !important; }
+    .of-prefer-opt { flex: none !important; }
   }
   @media (max-width: 479px) {
     .of-logo-mark { font-size: 14px !important; letter-spacing: 0 !important; }
@@ -723,7 +733,7 @@
 <p style="font-size: 15px; line-height: 1.9; color: rgb(74, 90, 96); margin: 0px 0px 26px;">担当より2営業日以内にご連絡いたします。<br/>少々お待ちください。</p>
 <p hidden="" id="ofSendFailed" style="font-size: 13px; line-height: 1.9; color: rgb(208, 73, 42); margin: -8px 0px 22px; font-weight: 600;">
               ※通信の状態により、送信できていない可能性があります。<br/>
-              念のため <a href="mailto:admin@overfence.com?subject=%E3%80%90HP%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%82%88%E3%82%8A%E3%80%91%20&amp;body=%E4%BC%9A%E7%A4%BE%E5%90%8D%EF%BC%9A%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0A%E3%83%A1%E3%83%BC%E3%83%AB%EF%BC%9A%0A%E8%A8%AD%E7%AB%8B%E6%99%82%E6%9C%9F%EF%BC%9A%0A%0A%E3%81%94%E7%9B%B8%E8%AB%87%E5%86%85%E5%AE%B9%EF%BC%9A%0A%0A" id="ofMailto" style="color: rgb(31, 122, 140);">admin@overfence.com へメールで送る</a> こともできます。
+              念のため <a href="mailto:admin@overfence.com?subject=%E3%80%90HP%E3%83%95%E3%82%A9%E3%83%BC%E3%83%A0%E3%82%88%E3%82%8A%E3%80%91%20&amp;body=%E4%BC%9A%E7%A4%BE%E5%90%8D%EF%BC%9A%0A%E3%81%8A%E5%90%8D%E5%89%8D%EF%BC%9A%0A%E3%83%A1%E3%83%BC%E3%83%AB%EF%BC%9A%0A%E8%A8%AD%E7%AB%8B%E6%99%82%E6%9C%9F%EF%BC%9A%0A%E5%B8%8C%E6%9C%9B%EF%BC%9A%0A%E7%AC%AC1%E5%B8%8C%E6%9C%9B%EF%BC%9A%0A%E7%AC%AC2%E5%B8%8C%E6%9C%9B%EF%BC%9A%0A%E7%AC%AC3%E5%B8%8C%E6%9C%9B%EF%BC%9A%0A%0A%E3%81%94%E7%9B%B8%E8%AB%87%E5%86%85%E5%AE%B9%EF%BC%9A%0A%0A" id="ofMailto" style="color: rgb(31, 122, 140);">admin@overfence.com へメールで送る</a> こともできます。
             </p>
 <button id="ofReset" style='background: none; border: 1px solid rgb(205, 216, 217); color: rgb(74, 90, 96); font-weight: 700; font-size: 13.5px; padding: 11px 22px; border-radius: 2px; cursor: pointer; font-family: "Noto Sans JP", sans-serif;' type="button">フォームに戻る</button>
 </div><div id="ofFormCard" style="background: rgb(255, 255, 255); color: rgb(22, 36, 43); padding: clamp(28px, 4vw, 48px); border-width: 4px 1px 1px; border-style: solid; border-color: rgb(31, 122, 140) rgb(221, 230, 231) rgb(221, 230, 231); border-image: none; box-shadow: rgba(13, 59, 69, 0.07) 0px 6px 22px;">
@@ -747,6 +757,41 @@
 <div>
 <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: rgb(22, 36, 43); margin-bottom: 9px;">ご相談内容 <span style="font-size: 11px; font-weight: 600; color: rgb(106, 122, 128); background: rgb(238, 242, 242); padding: 2px 7px; border-radius: 2px;">任意</span></label>
 <textarea class="scp3" data-field="message" name="message" placeholder="例：設立したばかりで領収書が溜まっています。決算が不安です。" rows="4" style='width: 100%; padding: 13px 15px; border: 1px solid rgb(205, 216, 217); border-radius: 2px; font-size: 15px; font-family: "Noto Sans JP", sans-serif; color: rgb(22, 36, 43); outline: none; resize: vertical; line-height: 1.7;'></textarea>
+</div>
+<div>
+<label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: rgb(22, 36, 43); margin-bottom: 9px;">ご希望の形式 <span style="font-size: 11px; font-weight: 600; color: rgb(106, 122, 128); background: rgb(238, 242, 242); padding: 2px 7px; border-radius: 2px;">任意</span></label>
+<div class="of-prefer-row" style="display: flex; flex-wrap: wrap; gap: 10px;">
+<label class="of-prefer-opt scp4" style="display: flex; align-items: center; gap: 9px; padding: 12px 15px; border: 1px solid rgb(205, 216, 217); border-radius: 2px; font-size: 14px; font-weight: 500; color: rgb(42, 58, 64); background: rgb(255, 255, 255); cursor: pointer;">
+<input data-field="prefer" name="prefer" style="width: 16px; height: 16px; margin: 0px; accent-color: rgb(31, 122, 140); cursor: pointer; flex: 0 0 auto;" type="radio" value="オンライン（Google Meet）"/>
+<span>オンライン（Google Meet）</span>
+</label>
+<label class="of-prefer-opt scp4" style="display: flex; align-items: center; gap: 9px; padding: 12px 15px; border: 1px solid rgb(205, 216, 217); border-radius: 2px; font-size: 14px; font-weight: 500; color: rgb(42, 58, 64); background: rgb(255, 255, 255); cursor: pointer;">
+<input data-field="prefer" name="prefer" style="width: 16px; height: 16px; margin: 0px; accent-color: rgb(31, 122, 140); cursor: pointer; flex: 0 0 auto;" type="radio" value="対面（新宿）"/>
+<span>対面（新宿）</span>
+</label>
+<label class="of-prefer-opt scp4" style="display: flex; align-items: center; gap: 9px; padding: 12px 15px; border: 1px solid rgb(205, 216, 217); border-radius: 2px; font-size: 14px; font-weight: 500; color: rgb(42, 58, 64); background: rgb(255, 255, 255); cursor: pointer;">
+<input data-field="prefer" name="prefer" style="width: 16px; height: 16px; margin: 0px; accent-color: rgb(31, 122, 140); cursor: pointer; flex: 0 0 auto;" type="radio" value="どちらでも"/>
+<span>どちらでも</span>
+</label>
+</div>
+</div>
+<div>
+<label style="display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: rgb(22, 36, 43); margin-bottom: 9px;">ご都合のよい日時 <span style="font-size: 11px; font-weight: 600; color: rgb(106, 122, 128); background: rgb(238, 242, 242); padding: 2px 7px; border-radius: 2px;">任意</span></label>
+<p style="font-size: 12.5px; color: rgb(106, 122, 128); margin: -3px 0px 11px; line-height: 1.75;">候補を3つほどいただけると、日程調整が1往復で済みます。</p>
+<div style="display: flex; flex-direction: column; gap: 9px;">
+<div class="of-wish-row" style="display: grid; grid-template-columns: 68px 1fr; align-items: center; gap: 10px;">
+<span style="font-size: 12.5px; font-weight: 700; color: rgb(74, 90, 96);">第1希望</span>
+<input class="scp3" data-field="wish1" name="wish1" placeholder="例：9/16（火）14時〜" style='width: 100%; padding: 12px 14px; border: 1px solid rgb(205, 216, 217); border-radius: 2px; font-size: 14.5px; font-family: "Noto Sans JP", sans-serif; color: rgb(22, 36, 43); outline: none;' type="text" value=""/>
+</div>
+<div class="of-wish-row" style="display: grid; grid-template-columns: 68px 1fr; align-items: center; gap: 10px;">
+<span style="font-size: 12.5px; font-weight: 700; color: rgb(74, 90, 96);">第2希望</span>
+<input class="scp3" data-field="wish2" name="wish2" placeholder="例：9/17（水）10時〜" style='width: 100%; padding: 12px 14px; border: 1px solid rgb(205, 216, 217); border-radius: 2px; font-size: 14.5px; font-family: "Noto Sans JP", sans-serif; color: rgb(22, 36, 43); outline: none;' type="text" value=""/>
+</div>
+<div class="of-wish-row" style="display: grid; grid-template-columns: 68px 1fr; align-items: center; gap: 10px;">
+<span style="font-size: 12.5px; font-weight: 700; color: rgb(74, 90, 96);">第3希望</span>
+<input class="scp3" data-field="wish3" name="wish3" placeholder="例：9/18（木）終日" style='width: 100%; padding: 12px 14px; border: 1px solid rgb(205, 216, 217); border-radius: 2px; font-size: 14.5px; font-family: "Noto Sans JP", sans-serif; color: rgb(22, 36, 43); outline: none;' type="text" value=""/>
+</div>
+</div>
 </div>
 <div aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden;">
 <label>ウェブサイト（入力しないでください）
@@ -833,14 +878,27 @@
   var thanks = document.getElementById('ofThanks');
   var submitBtn = document.getElementById('ofSubmit');
   var labelEl = document.querySelector('[data-submit-label]');
-  var fields = {};
+  var fields = {};   /* 単一要素の欄（text/email/textarea） */
+  var radios = {};   /* ラジオ群（data-fieldが同じinputが複数ある欄） */
   Array.prototype.forEach.call(document.querySelectorAll('[data-field]'), function (el) {
-    fields[el.getAttribute('data-field')] = el;
+    var k = el.getAttribute('data-field');
+    if (el.tagName === 'INPUT' && el.type === 'radio') {
+      (radios[k] = radios[k] || []).push(el);
+    } else {
+      fields[k] = el;
+    }
   });
   var REQUIRED = ['company', 'name', 'email'];
   var sending = false;
 
-  function val(k) { return fields[k] ? String(fields[k].value || '').trim() : ''; }
+  function val(k) {
+    if (radios[k]) {
+      var g = radios[k];
+      for (var i = 0; i < g.length; i++) { if (g[i].checked) return String(g[i].value || '').trim(); }
+      return '';   /* 任意項目。未選択なら空文字を送る */
+    }
+    return fields[k] ? String(fields[k].value || '').trim() : '';
+  }
   function setLabel(t) { if (labelEl) labelEl.textContent = t; }
   function setErr(k, msg) {
     var box = document.querySelector('[data-err-for="' + k + '"]');
@@ -867,7 +925,11 @@
         '会社名：' + val('company') + '\n' +
         'お名前：' + val('name') + '\n' +
         'メール：' + val('email') + '\n' +
-        '設立時期：' + val('founded') + '\n\n' +
+        '設立時期：' + val('founded') + '\n' +
+        '希望：' + val('prefer') + '\n' +
+        '第1希望：' + val('wish1') + '\n' +
+        '第2希望：' + val('wish2') + '\n' +
+        '第3希望：' + val('wish3') + '\n\n' +
         'ご相談内容：\n' + val('message') + '\n');
   }
   function done(failed) {
@@ -894,6 +956,7 @@
     var body = new URLSearchParams({
       company: val('company'), name: val('name'), email: val('email'),
       founded: val('founded'), message: val('message'),
+      prefer: val('prefer'), wish1: val('wish1'), wish2: val('wish2'), wish3: val('wish3'),
       website: fields.website ? String(fields.website.value || '') : '',
       page: location.href, ua: navigator.userAgent
     });
@@ -911,9 +974,12 @@
   if (resetBtn) resetBtn.addEventListener('click', function () {
     if (thanks) thanks.hidden = true;
     if (card) card.hidden = false;
-    ['company', 'name', 'email', 'founded', 'message', 'website'].forEach(function (k) {
+    ['company', 'name', 'email', 'founded', 'message', 'wish1', 'wish2', 'wish3', 'website'].forEach(function (k) {
       if (fields[k]) fields[k].value = '';
       setErr(k, '');
+    });
+    Object.keys(radios).forEach(function (k) {
+      radios[k].forEach(function (el) { el.checked = false; });
     });
     var c = document.getElementById('contact');
     if (c) window.scrollTo(0, c.offsetTop - 70);
