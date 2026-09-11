@@ -49,14 +49,18 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <style>x-dc{display:none!important}</style>
-<title>設立1年目の会社の税理士｜久保田税務会計事務所×株式会社オーバーフェンス</title>
+<title>オーバーフェンス×久保田税務会計事務所｜経理から申告まで窓口ひとつ</title>
+<link href="/favicon.ico" rel="icon" sizes="48x48"/>
+<link href="/favicon-96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="/icon-192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="/apple-touch-icon.png" rel="apple-touch-icon"/>
 <meta content="設立1年目の法人向け。税務顧問・決算・法人税申告は久保田税務会計事務所（税理士 久保田英夫）が、記帳・給与計算などの経理代行は株式会社オーバーフェンスが担当し、窓口をひとつにまとめます。初回30分のご相談は無料。オンラインでも対面でも。" name="description"/>
 <link href="https://www.overfence.com/" rel="canonical"/>
 <meta content="index,follow,max-image-preview:large" name="robots"/>
 <meta content="website" property="og:type"/>
 <meta content="ja_JP" property="og:locale"/>
-<meta content="久保田税務会計事務所×株式会社オーバーフェンス" property="og:site_name"/>
-<meta content="設立1年目の会社の税理士｜久保田税務会計事務所×株式会社オーバーフェンス" property="og:title"/>
+<meta content="株式会社オーバーフェンス×久保田税務会計事務所" property="og:site_name"/>
+<meta content="オーバーフェンス×久保田税務会計事務所｜経理から申告まで窓口ひとつ" property="og:title"/>
 <meta content="設立1年目の法人向け。税務顧問・決算・法人税申告は久保田税務会計事務所（税理士 久保田英夫）が、記帳・給与計算などの経理代行は株式会社オーバーフェンスが担当し、窓口をひとつにまとめます。初回30分のご相談は無料。オンラインでも対面でも。" property="og:description"/>
 <meta content="https://www.overfence.com/" property="og:url"/>
 <!-- og:image はチーム帯画像を1200x630でトリミングして /ogp.jpg に配置（公開前に要作成） -->
@@ -64,7 +68,7 @@
 <meta content="1200" property="og:image:width"/>
 <meta content="630" property="og:image:height"/>
 <meta content="summary_large_image" name="twitter:card"/>
-<meta content="設立1年目の会社の税理士｜久保田税務会計事務所×株式会社オーバーフェンス" name="twitter:title"/>
+<meta content="オーバーフェンス×久保田税務会計事務所｜経理から申告まで窓口ひとつ" name="twitter:title"/>
 <meta content="設立1年目の法人向け。税務顧問・決算・法人税申告は久保田税務会計事務所（税理士 久保田英夫）が、記帳・給与計算などの経理代行は株式会社オーバーフェンスが担当し、窓口をひとつにまとめます。初回30分のご相談は無料。オンラインでも対面でも。" name="twitter:description"/>
 <meta content="https://www.overfence.com/ogp.jpg" name="twitter:image"/>
 <script type="application/ld+json">
@@ -76,6 +80,10 @@
       "@id": "https://www.overfence.com/#kubota-hideo",
       "name": "久保田英夫",
       "jobTitle": "税理士",
+      "memberOf": {
+        "@type": "Organization",
+        "name": "東京税理士会"
+      },
       "worksFor": {
         "@type": "Organization",
         "@id": "https://www.overfence.com/#kubotazeimu",
@@ -102,7 +110,7 @@
       ],
       "@id": "https://www.overfence.com/#overfence",
       "name": "株式会社オーバーフェンス",
-      "alternateName": "OVERFENCE Inc.",
+      "alternateName": ["オーバーフェンス", "OVERFENCE", "OVERFENCE Inc."],
       "url": "https://www.overfence.com/",
       "foundingDate": "2000",
       "description": "経理事務代行業（記帳代行・給与計算・経費精算・請求書発行・支払業務）",
@@ -136,7 +144,7 @@
       "@type": "WebSite",
       "@id": "https://www.overfence.com/#website",
       "url": "https://www.overfence.com/",
-      "name": "久保田税務会計事務所×株式会社オーバーフェンス",
+      "name": "株式会社オーバーフェンス×久保田税務会計事務所",
       "inLanguage": "ja",
       "author": {
         "@id": "https://www.overfence.com/#kubota-hideo"
@@ -290,7 +298,7 @@
   @media (max-width: 767px) {
     /* (1) ヘッダーのロゴが1文字ずつ縦に折り返す → 折返し禁止＋縮小 */
     .of-hdr-inner { gap: 10px !important; padding-left: 16px !important; padding-right: 16px !important; }
-    .of-logo { gap: 7px !important; min-width: 0; }
+    .of-logo { flex-direction: column !important; align-items: flex-start !important; gap: 1px !important; min-width: 0; }
     .of-logo-mark { white-space: nowrap !important; font-size: 17px !important; letter-spacing: .02em !important; }
     .of-logo-sub { white-space: nowrap !important; font-size: 10px !important; letter-spacing: .10em !important; }
     .of-hdr-cta { font-size: 12.5px !important; padding: 10px 14px !important; }
@@ -307,7 +315,7 @@
   }
   @media (max-width: 479px) {
     .of-logo-mark { font-size: 14px !important; letter-spacing: 0 !important; }
-    .of-logo-sub { display: none !important; }
+    .of-logo-sub { letter-spacing: 0 !important; }
     .of-hdr-cta { font-size: 12px !important; padding: 9px 12px !important; }
     /* 会社概要：ラベル／内容を縦積みに */
     .of-company-row { grid-template-columns: 1fr !important; }
@@ -321,7 +329,7 @@
 <div class="of-hdr-inner" style="max-width: 1140px; margin: 0px auto; padding: 18px clamp(20px, 5vw, 56px); display: flex; align-items: center; justify-content: space-between; gap: 16px;">
 <a class="of-logo" href="#top" style="text-decoration: none; display: flex; align-items: baseline; gap: 10px;">
 <span class="of-logo-mark" style='font-family: "Shippori Mincho B1", serif; font-weight: 800; font-size: 21px; letter-spacing: 0.04em; color: rgb(255, 255, 255); transition: color 0.3s;'>株式会社オーバーフェンス</span>
-<span class="of-logo-sub" style="font-size: 11px; letter-spacing: 0.18em; color: rgba(255, 255, 255, 0.6); font-weight: 500; transition: color 0.3s;">OVERFENCE</span>
+<span class="of-logo-sub" style="font-size: 12px; letter-spacing: 0.06em; color: rgba(255, 255, 255, 0.6); font-weight: 500; transition: color 0.3s;">× 久保田税務会計事務所</span>
 </a>
 <nav style="display: flex; align-items: center; gap: clamp(14px, 3vw, 30px);">
 <a href="#price" id="ofNavLink" style="text-decoration: none; font-size: 13.5px; font-weight: 700; letter-spacing: 0.04em; color: rgba(255, 255, 255, 0.85); transition: color 0.3s; display: inline-block; white-space: nowrap;">料金</a>
@@ -748,7 +756,7 @@
 </div>
 <div class="of-company-row" style="display: grid; grid-template-columns: minmax(110px, 200px) 1fr;">
 <div style="padding: clamp(18px, 2.2vw, 24px) clamp(18px, 2.4vw, 28px); background: rgb(246, 249, 249); font-size: 13.5px; font-weight: 700; letter-spacing: 0.04em; color: rgb(13, 59, 69);">税務顧問</div>
-<div style="padding: clamp(18px, 2.2vw, 24px) clamp(18px, 2.4vw, 28px); font-size: 15px; font-weight: 500; color: rgb(42, 58, 64); line-height: 1.85;">税理士 久保田英夫<br/><span style="font-size: 13.5px; color: rgb(90, 106, 112);">久保田税務会計事務所<br/>税務顧問・決算・法人税申告を担当</span></div>
+<div style="padding: clamp(18px, 2.2vw, 24px) clamp(18px, 2.4vw, 28px); font-size: 15px; font-weight: 500; color: rgb(42, 58, 64); line-height: 1.85;">税理士 久保田英夫（東京税理士会 会員）<br/><span style="font-size: 13.5px; color: rgb(90, 106, 112);">久保田税務会計事務所<br/>税務顧問・決算・法人税申告を担当</span></div>
 </div>
 </div>
 </div>
@@ -847,7 +855,7 @@
 <div style="font-size: 12.5px; letter-spacing: 0.12em; color: rgba(255, 255, 255, 0.4); margin-bottom: 16px;">OVERFENCE Inc.</div>
 <div style="font-size: 13px; line-height: 1.9;">経理事務代行業（記帳・給与計算・経費精算）</div>
 <div style="font-size: 13px; line-height: 1.9; margin-top: 14px; color: rgba(255, 255, 255, 0.55);">当社所在地：〒160-0022 東京都新宿区新宿2-12-4 アコード新宿ビル302</div>
-<div style="font-size: 13px; line-height: 1.9; margin-top: 14px;">税務顧問：税理士 久保田英夫／久保田税務会計事務所</div>
+<div style="font-size: 13px; line-height: 1.9; margin-top: 14px;">税務顧問：税理士 久保田英夫（東京税理士会 会員）／久保田税務会計事務所</div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 12px;">
 <a href="#faq" style="text-decoration: none; color: rgba(255, 255, 255, 0.8); font-size: 13.5px; font-weight: 700;">よくある質問・会社概要 →</a>
