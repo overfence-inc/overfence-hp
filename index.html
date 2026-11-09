@@ -1031,6 +1031,7 @@
     if (submitBtn) submitBtn.disabled = false;
     setLabel('まず相談してみる');
     if (card) card.hidden = true;
+    if (!failed && typeof gtag === 'function') { try { gtag('event', 'generate_lead', { form_name: 'consult' }); } catch (e) {} }
     if (thanks) {
       thanks.hidden = false;
       var f = document.getElementById('ofSendFailed');
